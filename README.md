@@ -11,17 +11,18 @@ This is the second project on Udacity's Flying Car Nanodegree. It consists of pl
 The goal here is to understand the starter code. We've provided you with a functional yet super basic path planning implementation and in this step, your task is to explain how it works! Have a look at the code, particularly in the plan_path() method and functions provided in planning_utils.py and describe what's going on there. This need not be a lengthy essay, just a concise description of the functionality of the starter code. 
 
 # Explaination for the Starter Code:
-- [x] Test that motion_planning.py is a modified version of backyard_flyer_solution.py for simple path planning :- <br />
-	- [x]  Starting from import there are quite a few new imports in motion_planning.py like "argparse", "msgpack", "utm" & "auto" from enum<br />
-	- [x] States uses auto() instead of integers<br />
-	- [x] Local_position_callback remove call to self.calculate_box before call to self.waypoint_transistion(), local change references from self.all_waypoints to self.waypoints<br />
-	- [x] State changes state includes self.plan_path() in motion_planning.py's state_callback() and in backyard flying solution it is set to takeoff_transaction()<br />
-	- [x] Local_position_callback, velocity_callbacks, landing, disarming, waypoint_transition, & manual_transaction has working similar to backyard_flyer_solution<br />
-	- [x] arming transaction is made to arm and take control and in backyard's it sets global home position.<br />
-	- [x] takeoff_transaction in motion_planning file uses dynamic value using self.target_position[2] and in solution file it is hard coded to specific height<br />
-	- [x] start calls self.connection.start() instead of super().start()<br />
-	- [x] Main function sleeps for 1 second instead of 2<br />
-	- [x]  plan_path new feature. generates waypoints and send them to simulator with send_waypoints<br />
+## Test that motion_planning.py is a modified version of backyard_flyer_solution.py for simple path planning
+
+- [x]  Starting from import there are quite a few new imports in motion_planning.py like "argparse", "msgpack", "utm" & "auto" from enum
+- [x] States uses auto() instead of integers<br />
+- [x] Local_position_callback remove call to self.calculate_box before call to self.waypoint_transistion(), local change references from self.all_waypoints to self.waypoints<br />
+- [x] State changes state includes self.plan_path() in motion_planning.py's state_callback() and in backyard flying solution it is set to takeoff_transaction()<br />
+- [x] Local_position_callback, velocity_callbacks, landing, disarming, waypoint_transition, & manual_transaction has working similar to backyard_flyer_solution<br />
+- [x] arming transaction is made to arm and take control and in backyard's it sets global home position.<br />
+- [x] takeoff_transaction in motion_planning file uses dynamic value using self.target_position[2] and in solution file it is hard coded to specific height<br />
+- [x] start calls self.connection.start() instead of super().start()<br />
+- [x] Main function sleeps for 1 second instead of 2<br />
+- [x]  plan_path new feature. generates waypoints and send them to simulator with send_waypoints<br />
 
 # Implementing Your Path Planning Algorithm
 - [x] Setting States to PLANNING, Defining TARGET_ALTITUDE and SAFETY_DISTANCE. Set TARGET_ALTITUDE to self.target_position[2]. Used variable called "filename" to store csv filename<br />
@@ -72,6 +73,6 @@ The goal here is to understand the starter code. We've provided you with a funct
 - [x] Used collinearity test to prune path found using A* algorithm [line 181](./motion_planning.py#L181)
 
 # Area of Improvements
-- [] Replacing Path finding from A* to Medial AXIS
-- [] Prune using Bresenhanm
-- [] Real world Planning constraints linke wind and other flying objects
+- [ ] Replacing Path finding from A* to Medial AXIS
+- [ ] Prune using Bresenhanm
+- [ ] Real world Planning constraints linke wind and other flying objects
