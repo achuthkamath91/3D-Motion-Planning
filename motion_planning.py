@@ -133,7 +133,7 @@ class MotionPlanning(Drone):
 
         # TODO: retrieve current global position
         global_position = [self._longitude, self._latitude, self._altitude]
-        
+
         # TODO: convert to current local position using global_to_local()
         NED_local_position = global_to_local(global_position,self.global_home)
 
