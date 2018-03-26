@@ -27,40 +27,51 @@ The goal here is to understand the starter code. We've provided you with a funct
 - [x] Setting States to PLANNING, Defining TARGET_ALTITUDE and SAFETY_DISTANCE. Set TARGET_ALTITUDE to self.target_position[2]. Used variable called "filename" to store csv filename<br />
 - [x] Read the first line of the csv file and extracts lat0 and lon0 from the csv file and store this into variables called lat0 & lon0<br />
 - [x] set home position to (lon0, lat0, 0) -> can be achieved using self.set_home_position(lon0, lat0, 0) defined in DRONE API<br />
+	```
+	self.set_home_position(lon0, lat0, 0)
+	```
 - [x] retrieving current global position and converting to current local position using global_to_local() from udacidrone.frame_utils<br />
+	```
+	NED_local_position = global_to_local(global_position,self.global_home)
+	```
 - [x] Another step in adding flexibility to the start location. start location is nothing but the current local location which we just discovered in the previous step<br />
 	```
 	grid_north = int(NED_local_position[0] - north_offset)
-        grid_east = int(NED_local_position[1] - east_offset)
-        grid_start = (grid_north, grid_east)
+	grid_east = int(NED_local_position[1] - east_offset)
+	grid_start = (grid_north, grid_east)
 	```
 - [x] Grid goal is arbitrary position from the map. (Found [-122.396856, 37.797349] using the simulator and converted to NED using global_to_local and used to define as goal in the project) <br />
-		```
-        grid_goal = [-122.396856, 37.797349, self.global_home[2]]  # washington Street + Drum Street
-        grid_goal_local = global_to_local(grid_goal,self.global_home)
-        grid_goal = (int(grid_goal_local[0]-north_offset), int(grid_goal_local[1]-east_offset))
-		```
+	```
+	grid_goal = [-122.396856, 37.797349, self.global_home[2]]  # washington Street + Drum Street
+	grid_goal_local = global_to_local(grid_goal,self.global_home)
+	grid_goal = (int(grid_goal_local[0]-north_offset), int(grid_goal_local[1]-east_offset))
+	```
 - [x] Used special condition to check for start and goal location if start and goal is less than 10 square meteres than the goal will be set to gloabal position.<br />
 - [x] Search algorithm used was A* with diagonal direction Actions Diagonal actions include 3 tuples with cost of sqrt(2)
 	[line 178](./motion_planning.py#L178)<br/>
 	
 	adding Diagonal ACTIONS [line 54](./planning_utils.py#L54-L61)
 	```
-		NORTH_WEST = (-1,-1, np.sqrt(2))
-		NORTH_EAST = (-1, 1, np.sqrt(2))
-		SOUTH_WEST = (1, -1, np.sqrt(2))
-		SOUTH_EAST = (1,  1, np.sqrt(2))
+	NORTH_WEST = (-1,-1, np.sqrt(2))
+	NORTH_EAST = (-1, 1, np.sqrt(2))
+	SOUTH_WEST = (1, -1, np.sqrt(2))
+	SOUTH_EAST = (1,  1, np.sqrt(2))
 	```
 	
 	validation of actions #check if the node is off the grid or a collison [line 83](./planning_utils.py#L83-L98)
 	```
-		if x - 1 < 0 or y + 1 > m or grid[x - 1, y + 1] == 1:
-			valid_actions.remove(Action.NORTH_EAST)
-		if x + 1 > n or y + 1 > m or grid[x + 1, y + 1] == 1:
-			valid_actions.remove(Action.SOUTH_EAST)
-		if x - 1 < 0 or y - 1 < 0 or grid[x - 1, y - 1] == 1:
-			valid_actions.remove(Action.NORTH_WEST)
-		if x + 1 > n or y - 1 < 0 or grid[x + 1, y - 1] == 1:
-			valid_actions.remove(Action.SOUTH_WEST)
+	if x - 1 < 0 or y + 1 > m or grid[x - 1, y + 1] == 1:
+		valid_actions.remove(Action.NORTH_EAST)
+	if x + 1 > n or y + 1 > m or grid[x + 1, y + 1] == 1:
+		valid_actions.remove(Action.SOUTH_EAST)
+	if x - 1 < 0 or y - 1 < 0 or grid[x - 1, y - 1] == 1:
+		valid_actions.remove(Action.NORTH_WEST)
+	if x + 1 > n or y - 1 < 0 or grid[x + 1, y - 1] == 1:
+		valid_actions.remove(Action.SOUTH_WEST)
 	```
 - [x] Used collinearity test to prune path found using A* algorithm [line 181](./motion_planning.py#L181)
+
+# Area of Improvements
+- [] Replacing Path finding from A* to Medial AXIS
+- [] Prune using Bresenhanm
+- [] Real world Planning constraints linke wind and other flying objects
