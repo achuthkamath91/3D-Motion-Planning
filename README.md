@@ -1,17 +1,17 @@
 
-# FCND-Term1-P2-3D-Motion-Planning
-@achuth kamath
+# FCND-Term1-P2-3D-Motion-Planning #
+@achuthkamath91
 Udacity Flying Car Nanodegree - Term 1 - Project 2 - 3D Motion Planning
 
 This is the second project on Udacity's Flying Car Nanodegree. It consists of planning and executing a trajectory of a drone in an urban environment provided by Udacity including FCND Simulator. Built on top of the event-based technique used in the first project, the complexity of path planning in a 3D environment is explored. The code communicates with Udacity FCND Simulator using Udacidrone API.
 
 
-# Project description
+## Project description ##
 
 The goal here is to understand the starter code. We've provided you with a functional yet super basic path planning implementation and in this step, your task is to explain how it works! Have a look at the code, particularly in the plan_path() method and functions provided in planning_utils.py and describe what's going on there. This need not be a lengthy essay, just a concise description of the functionality of the starter code. 
 
-# Explaination for the Starter Code:
-## Test that motion_planning.py is a modified version of backyard_flyer_solution.py for simple path planning
+## Explaination for the Starter Code: ##
+### Test that motion_planning.py is a modified version of backyard_flyer_solution.py for simple path planning ###
 
 - [x]  Starting from import there are quite a few new imports in motion_planning.py like "argparse", "msgpack", "utm" & "auto" from enum
 - [x] States uses auto() instead of integers<br />
@@ -24,7 +24,7 @@ The goal here is to understand the starter code. We've provided you with a funct
 - [x] Main function sleeps for 1 second instead of 2<br />
 - [x]  plan_path new feature. generates waypoints and send them to simulator with send_waypoints<br />
 
-# Implementing Your Path Planning Algorithm
+## Implementing Your Path Planning Algorithm ##
 - [x] Setting States to PLANNING, Defining TARGET_ALTITUDE and SAFETY_DISTANCE. Set TARGET_ALTITUDE to self.target_position[2]. Used variable called "filename" to store csv filename<br />
 - [x] Read the first line of the csv file and extracts lat0 and lon0 from the csv file and store this into variables called lat0 & lon0<br />
 - [x] set home position to (lon0, lat0, 0) -> can be achieved using self.set_home_position(lon0, lat0, 0) defined in DRONE API<br />
@@ -72,7 +72,7 @@ The goal here is to understand the starter code. We've provided you with a funct
 	```
 - [x] Used collinearity test to prune path found using A* algorithm [line 181](./motion_planning.py#L181)
 
-# Area of Improvements
+## Area of Improvements ##
 - [ ] Replacing Path finding from A* to Medial AXIS
 - [ ] Prune using Bresenhanm
-- [ ] Real world Planning constraints linke wind and other flying objects
+- [ ] Real world Planning constraints like wind and other flying objects
