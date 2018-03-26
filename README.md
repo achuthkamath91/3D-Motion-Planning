@@ -11,7 +11,7 @@ This is the second project on Udacity's Flying Car Nanodegree. It consists of pl
 The goal here is to understand the starter code. We've provided you with a functional yet super basic path planning implementation and in this step, your task is to explain how it works! Have a look at the code, particularly in the plan_path() method and functions provided in planning_utils.py and describe what's going on there. This need not be a lengthy essay, just a concise description of the functionality of the starter code. 
 
 # Explaination for the Starter Code:
-1.Test that motion_planning.py is a modified version of backyard_flyer_solution.py for simple path planning :- <br />
+- [x] Test that motion_planning.py is a modified version of backyard_flyer_solution.py for simple path planning :- <br />
 	- [x]  Starting from import there are quite a few new imports in motion_planning.py like "argparse", "msgpack", "utm" & "auto" from enum<br />
 	- [x] States uses auto() instead of integers<br />
 	- [x] Local_position_callback remove call to self.calculate_box before call to self.waypoint_transistion(), local change references from self.all_waypoints to self.waypoints<br />
