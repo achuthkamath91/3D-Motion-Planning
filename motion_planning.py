@@ -124,8 +124,6 @@ class MotionPlanning(Drone):
         self.target_position[2] = TARGET_ALTITUDE
 
         # TODO: read lat0, lon0 from colliders into floating point values
-
-        #lat0_lon0 = np.loadtxt('colliders.csv', delimiter=',')
         with open(filename) as f:
             lat,long = f.readline().split(',')
             lat0,lon0 = float(lat.split(' ')[-1]), float(long.split(' ')[-1])
@@ -135,6 +133,7 @@ class MotionPlanning(Drone):
 
         # TODO: retrieve current global position
         global_position = [self._longitude, self._latitude, self._altitude]
+        
         # TODO: convert to current local position using global_to_local()
         NED_local_position = global_to_local(global_position,self.global_home)
 
@@ -153,14 +152,13 @@ class MotionPlanning(Drone):
         grid_east = int(NED_local_position[1] - east_offset)
         grid_start = (grid_north, grid_east)
         # TODO: convert start position to current position rather than map center
-        print(grid_start)
+        #print(grid_start)
         # Set goal as some arbitrary position on the grid
         #grid_goal = [-122.402020,37.796667] #washington Street
         grid_goal = [-122.396856, 37.797349, self.global_home[2]]  # washington Street + Drum Street
         grid_goal_local = global_to_local(grid_goal,self.global_home)
-        #grid_goal_north, grid_goal_east, grid_goal_down = self.global_to_local(self.goal_global_position, self.global_home)
         grid_goal = (int(grid_goal_local[0]-north_offset), int(grid_goal_local[1]-east_offset))
-        print(grid_goal)
+        #print(grid_goal)
         # TODO: adapt to set goal as latitude / longitude position and convert
         #Validation of start and Goal Start and Goal should be more than 10 Square meters in distance
         start_1 = grid_start[0]-grid_goal[0]
@@ -191,32 +189,6 @@ class MotionPlanning(Drone):
             self.send_waypoints()
         else:
             self.landing_transition()
-    #
-    # """ Function to convert local position to global """
-    #
-    # def global_to_local(self,global_position, global_home):
-    #
-    #     (east_home, north_home, _, _) = utm.from_latlon(global_home[1], global_home[0])
-    #
-    #     (east, north, _, _) = utm.from_latlon(global_position[1], global_position[0])
-    #
-    #     local_position = np.array([north - north_home, east - east_home, -(global_position[2] - global_home[2])])
-    #
-    #     return local_position
-    #
-    # """ NED to Geodetic """
-    # def local_to_global(self, local_position, global_home):
-    #
-    #     # get easting, northing, zone letter and number of global_home
-    #     # get (lat, lon) from local_position and converted global_home
-    #     # Create global_position of (lat, lon, alt)
-    #     (easting_home, northing_home, zone_number_home, zone_letter_home) = utm.from_latlon(global_home[1],
-    #                                                                                         global_home[0])
-    #     (latitude, longitude) = utm.to_latlon(easting_home + local_position[1], northing_home + local_position[0],
-    #                                           zone_number_home, zone_letter_home)
-    #     global_position = np.array([longitude, latitude, -(local_position[2] - global_home[2])])
-    #
-    #     return global_position
 
     def collinearity_float(self, p1, p2, p3, epsilon=1e-2):
         collinear = False
