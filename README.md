@@ -59,7 +59,7 @@ The goal here is to understand the starter code. We've provided you with a funct
 - [x] Search algorithm used was A* with diagonal direction Actions Diagonal actions include 3 tuples with cost of sqrt(2)
 	[LINE](./motion_planning.py#L176)<br/>
 	
-	adding Diagonal ACTIONS [LINE](./planning_utils.py#L54-L61)
+	adding Diagonal ACTIONS [LINE](./planning_utils.py#L55-L62)
 	```
 	NORTH_WEST = (-1,-1, np.sqrt(2))
 	NORTH_EAST = (-1, 1, np.sqrt(2))
@@ -67,7 +67,7 @@ The goal here is to understand the starter code. We've provided you with a funct
 	SOUTH_EAST = (1,  1, np.sqrt(2))
 	```
 	
-	validation of actions #check if the node is off the grid or a collison [LINE](./planning_utils.py#L83-L98)
+	validation of actions #check if the node is off the grid or a collison [LINE](./planning_utils.py#L92-L99)
 	```
 	if x - 1 < 0 or y + 1 > m or grid[x - 1, y + 1] == 1:
 		valid_actions.remove(Action.NORTH_EAST)
