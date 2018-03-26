@@ -1,4 +1,4 @@
-FCND-Term1-P2-3D-Motion-Planning
+# FCND-Term1-P2-3D-Motion-Planning
 @achuth kamath
 Udacity Flying Car Nanodegree - Term 1 - Project 2 - 3D Motion Planning
 
@@ -29,4 +29,5 @@ Implementing Your Path Planning Algorithm
 	4. retrieving current global position and converting to current local position using global_to_local() from udacidrone.frame_utils
 	5. Another step in adding flexibility to the start location. start location is nothing but the current local location which we just discovered in the previous step
 	6. Grid goal is arbitrary position from the map. (Found [-122.396856, 37.797349] using the simulator and converted to NED using global_to_local and used to define as goal in the project)  
-	7.
+	7. Used special condition to check for start and goal location if start and goal is less than 10 square meteres than the goal will be set to gloabal position.
+	8. Search algorithm used was A* with diagonal direction Actions Diagonal actions include 3 tuples with cost of sqrt(2)
