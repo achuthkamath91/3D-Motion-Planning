@@ -9,8 +9,8 @@ This is the second project on Udacity's Flying Car Nanodegree. It consists of pl
 
 The goal here is to understand the starter code. We've provided you with a functional yet super basic path planning implementation and in this step, your task is to explain how it works! Have a look at the code, particularly in the plan_path() method and functions provided in planning_utils.py and describe what's going on there. This need not be a lengthy essay, just a concise description of the functionality of the starter code. 
 
-# Explaination for the Starter Code
-	- 1.Test that motion_planning.py is a modified version of backyard_flyer_solution.py for simple path planning :- 
+# Explaination for the Starter Code:
+1.Test that motion_planning.py is a modified version of backyard_flyer_solution.py for simple path planning :- 
 		- i.  Starting from import there are quite a few new imports in motion_planning.py like "argparse", "msgpack", "utm" & "auto" from enum
 		- ii. States uses auto() instead of integers
 		- iii.Local_position_callback remove call to self.calculate_box before call to self.waypoint_transistion(), local change references from self.all_waypoints to self.waypoints
@@ -23,7 +23,7 @@ The goal here is to understand the starter code. We've provided you with a funct
 		- x.  plan_path new feature. generates waypoints and send them to simulator with send_waypoints
 
 # Implementing Your Path Planning Algorithm
-	- 1. Setting States to PLANNING, Defining TARGET_ALTITUDE and SAFETY_DISTANCE. Set TARGET_ALTITUDE to self.target_position[2]. Used variable called "filename" to store csv filename
+ 1. Setting States to PLANNING, Defining TARGET_ALTITUDE and SAFETY_DISTANCE. Set TARGET_ALTITUDE to self.target_position[2]. Used variable called "filename" to store csv filename
 	- 2. Read the first line of the csv file and extracts lat0 and lon0 from the csv file and store this into variables called lat0 & lon0
 	- 3. set home position to (lon0, lat0, 0) -> can be achieved using self.set_home_position(lon0, lat0, 0) defined in DRONE API
 	- 4. retrieving current global position and converting to current local position using global_to_local() from udacidrone.frame_utils
