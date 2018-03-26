@@ -25,8 +25,16 @@ The goal here is to understand the starter code. We've provided you with a funct
 - [x]  plan_path new feature. generates waypoints and send them to simulator with send_waypoints<br />
 
 ## Implementing Your Path Planning Algorithm ##
-- [x] Setting States to PLANNING, Defining TARGET_ALTITUDE and SAFETY_DISTANCE. Set TARGET_ALTITUDE to self.target_position[2]. Used variable called "filename" to store csv filename<br />
-- [x] Read the first line of the csv file and extracts lat0 and lon0 from the csv file and store this into variables called lat0 & lon0<br />
+- [x] Setting States to PLANNING, Defining TARGET_ALTITUDE and SAFETY_DISTANCE. Set TARGET_ALTITUDE to self.target_position[2]. Used variable called "filename" to store csv filename LINE [line 119](./motion_planning.py#L119-L124)<br />
+	```
+	self.flight_state = States.PLANNING
+	...
+	TARGET_ALTITUDE = 5
+        SAFETY_DISTANCE = 6 
+        filename = 'colliders.csv'
+        self.target_position[2] = TARGET_ALTITUDE
+	```
+- [x] Read the first line of the csv file and extracts lat0 and lon0 from the csv file and store this into variables called lat0 & lon0 on LINE [line 127](./motion_planning.py#L127-L129)<br />
 - [x] set home position to (lon0, lat0, 0) -> can be achieved using self.set_home_position(lon0, lat0, 0) defined in DRONE API<br />
 	```
 	self.set_home_position(lon0, lat0, 0)
@@ -49,7 +57,7 @@ The goal here is to understand the starter code. We've provided you with a funct
 	```
 - [x] Used special condition to check for start and goal location if start and goal is less than 10 square meteres than the goal will be set to gloabal position.<br />
 - [x] Search algorithm used was A* with diagonal direction Actions Diagonal actions include 3 tuples with cost of sqrt(2)
-	[line 178](./motion_planning.py#L178)<br/>
+	[line 176](./motion_planning.py#L176)<br/>
 	
 	adding Diagonal ACTIONS [line 54](./planning_utils.py#L54-L61)
 	```
@@ -70,7 +78,7 @@ The goal here is to understand the starter code. We've provided you with a funct
 	if x + 1 > n or y - 1 < 0 or grid[x + 1, y - 1] == 1:
 		valid_actions.remove(Action.SOUTH_WEST)
 	```
-- [x] Used collinearity test to prune path found using A* algorithm [line 181](./motion_planning.py#L181)
+- [x] Used collinearity test to prune path found using A* algorithm [line 179](./motion_planning.py#L179)
 
 ## Area of Improvements ##
 - [ ] Replacing Path finding from A* to Medial AXIS
