@@ -12,7 +12,7 @@ The goal here is to understand the starter code. We've provided you with a funct
 
 # Explaination for the Starter Code:
 1.Test that motion_planning.py is a modified version of backyard_flyer_solution.py for simple path planning :- <br />
-		- i.  Starting from import there are quite a few new imports in motion_planning.py like "argparse", "msgpack", "utm" & "auto" from enum<br />
+	i.  Starting from import there are quite a few new imports in motion_planning.py like "argparse", "msgpack", "utm" & "auto" from enum<br />
 		- ii. States uses auto() instead of integers<br />
 		- iii.Local_position_callback remove call to self.calculate_box before call to self.waypoint_transistion(), local change references from self.all_waypoints to self.waypoints<br />
 		- iv. State changes state includes self.plan_path() in motion_planning.py's state_callback() and in backyard flying solution it is set to takeoff_transaction()<br />
@@ -30,7 +30,7 @@ The goal here is to understand the starter code. We've provided you with a funct
 4. retrieving current global position and converting to current local position using global_to_local() from udacidrone.frame_utils<br />
 5. Another step in adding flexibility to the start location. start location is nothing but the current local location which we just discovered in the previous step<br />
 	```
-		grid_north = int(NED_local_position[0] - north_offset)
+	grid_north = int(NED_local_position[0] - north_offset)
         grid_east = int(NED_local_position[1] - east_offset)
         grid_start = (grid_north, grid_east)
 	```
@@ -42,7 +42,7 @@ The goal here is to understand the starter code. We've provided you with a funct
 		```
 7. Used special condition to check for start and goal location if start and goal is less than 10 square meteres than the goal will be set to gloabal position.<br />
 8. Search algorithm used was A* with diagonal direction Actions Diagonal actions include 3 tuples with cost of sqrt(2)
-	[line 178](./motion_planning.py#L178)
+	[line 178](./motion_planning.py#L178)<br/>
 	
 	adding Diagonal ACTIONS [line 54](./planning_utils.py#L54-L61)
 	```
@@ -52,9 +52,9 @@ The goal here is to understand the starter code. We've provided you with a funct
 		SOUTH_EAST = (1,  1, np.sqrt(2))
 	```
 	
-	validation of actions #check if the node is off the grid or [line 83](./planning_utils.py#L83-L98)
+	validation of actions #check if the node is off the grid or a collison [line 83](./planning_utils.py#L83-L98)
 	```
-		    if x - 1 < 0 or y + 1 > m or grid[x - 1, y + 1] == 1:
+		if x - 1 < 0 or y + 1 > m or grid[x - 1, y + 1] == 1:
 			valid_actions.remove(Action.NORTH_EAST)
 		if x + 1 > n or y + 1 > m or grid[x + 1, y + 1] == 1:
 			valid_actions.remove(Action.SOUTH_EAST)
