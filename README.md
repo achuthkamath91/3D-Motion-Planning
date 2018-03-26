@@ -25,7 +25,7 @@ The goal here is to understand the starter code. We've provided you with a funct
 - [x]  plan_path new feature. generates waypoints and send them to simulator with send_waypoints<br />
 
 ## Implementing Your Path Planning Algorithm ##
-- [x] Setting States to PLANNING, Defining TARGET_ALTITUDE and SAFETY_DISTANCE. Set TARGET_ALTITUDE to self.target_position[2]. Used variable called "filename" to store csv filename LINE [line 119](./motion_planning.py#L119-L124)<br />
+- [x] Setting States to PLANNING, Defining TARGET_ALTITUDE and SAFETY_DISTANCE. Set TARGET_ALTITUDE to self.target_position[2]. Used variable called "filename" to store csv filename [LINE](./motion_planning.py#L119-L124)<br />
 	```
 	self.flight_state = States.PLANNING
 	...
@@ -34,7 +34,7 @@ The goal here is to understand the starter code. We've provided you with a funct
         filename = 'colliders.csv'
         self.target_position[2] = TARGET_ALTITUDE
 	```
-- [x] Read the first line of the csv file and extracts lat0 and lon0 from the csv file and store this into variables called lat0 & lon0 on LINE [line 127](./motion_planning.py#L127-L129)<br />
+- [x] Read the first line of the csv file and extracts lat0 and lon0 from the csv file and store this into variables called lat0 & lon0 on [LINE](./motion_planning.py#L127-L129)<br />
 - [x] set home position to (lon0, lat0, 0) -> can be achieved using self.set_home_position(lon0, lat0, 0) defined in DRONE API<br />
 	```
 	self.set_home_position(lon0, lat0, 0)
@@ -57,9 +57,9 @@ The goal here is to understand the starter code. We've provided you with a funct
 	```
 - [x] Used special condition to check for start and goal location if start and goal is less than 10 square meteres than the goal will be set to gloabal position.<br />
 - [x] Search algorithm used was A* with diagonal direction Actions Diagonal actions include 3 tuples with cost of sqrt(2)
-	[line 176](./motion_planning.py#L176)<br/>
+	[LINE](./motion_planning.py#L176)<br/>
 	
-	adding Diagonal ACTIONS [line 54](./planning_utils.py#L54-L61)
+	adding Diagonal ACTIONS [LINE](./planning_utils.py#L54-L61)
 	```
 	NORTH_WEST = (-1,-1, np.sqrt(2))
 	NORTH_EAST = (-1, 1, np.sqrt(2))
@@ -67,7 +67,7 @@ The goal here is to understand the starter code. We've provided you with a funct
 	SOUTH_EAST = (1,  1, np.sqrt(2))
 	```
 	
-	validation of actions #check if the node is off the grid or a collison [line 83](./planning_utils.py#L83-L98)
+	validation of actions #check if the node is off the grid or a collison [LINE](./planning_utils.py#L83-L98)
 	```
 	if x - 1 < 0 or y + 1 > m or grid[x - 1, y + 1] == 1:
 		valid_actions.remove(Action.NORTH_EAST)
@@ -78,7 +78,7 @@ The goal here is to understand the starter code. We've provided you with a funct
 	if x + 1 > n or y - 1 < 0 or grid[x + 1, y - 1] == 1:
 		valid_actions.remove(Action.SOUTH_WEST)
 	```
-- [x] Used collinearity test to prune path found using A* algorithm [line 179](./motion_planning.py#L179)
+- [x] Used collinearity test to prune path found using A* algorithm [LINE](./motion_planning.py#L179)
 
 ## Area of Improvements ##
 - [ ] Replacing Path finding from A* to Medial AXIS
