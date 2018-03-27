@@ -2,6 +2,7 @@
 # FCND-Term1-P2-3D-Motion-Planning #
 @achuthkamath91
 Udacity Flying Car Nanodegree - Term 1 - Project 2 - 3D Motion Planning
+[picture](./images/giphy.gif)
 
 This is the second project on Udacity's Flying Car Nanodegree. It consists of planning and executing a trajectory of a drone in an urban environment provided by Udacity including FCND Simulator. Built on top of the event-based technique used in the first project, the complexity of path planning in a 3D environment is explored. The code communicates with Udacity FCND Simulator using Udacidrone API.
 
@@ -59,7 +60,7 @@ The goal here is to understand the starter code. We've provided you with a funct
 - [x] Search algorithm used was A* with diagonal direction Actions Diagonal actions include 3 tuples with cost of sqrt(2)
 	[LINE](./motion_planning.py#L176)<br/>
 	
-	adding Diagonal ACTIONS [LINE](./planning_utils.py#L55-L62)
+	adding Diagonal ACTIONS [LINE](./planning_utils.py#L59-L62)
 	```
 	NORTH_WEST = (-1,-1, np.sqrt(2))
 	NORTH_EAST = (-1, 1, np.sqrt(2))

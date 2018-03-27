@@ -119,7 +119,7 @@ class MotionPlanning(Drone):
         self.flight_state = States.PLANNING
         print("Searching for a path ...")
         TARGET_ALTITUDE = 5
-        SAFETY_DISTANCE = 6 #high due to velocity gained by travelling may end up colliding objects #needs fix
+        SAFETY_DISTANCE = 7  #high due to velocity gained by travelling may end up colliding objects #needs fix
         filename = 'colliders.csv'
         self.target_position[2] = TARGET_ALTITUDE
 
@@ -233,8 +233,6 @@ class MotionPlanning(Drone):
                 i += 1
 
         return pruned_path
-
-
 
     def start(self):
         self.start_log("Logs", "NavLog.txt")
